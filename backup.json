@@ -1,0 +1,128 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Reggae",
+      "description": "Smooth roots reggae vibes 🌿",
+      "slug": "reggae",
+      "image": "https://www.liveabout.com/thmb/psWmh528aoW2qeeQqxxflTemfvs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/bob-marley-bird-song-51178670-resized-58a6ee383df78c345b627ebd.jpg"
+    },
+    {
+      "id": 2,
+      "name": "RnB/Pop",
+      "description": "Sweet melodies and soulful vocals for late night chills 🎶",
+      "slug": "rnb",
+      "image": "https://i.ytimg.com/vi/em7v8kduYNA/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDdgC-YYfv5wdN7lO1lRFFot9kOjA"
+    },
+    {
+      "id": 3,
+      "name": "Bongo Flava",
+      "description": "East African flavor with energy, groove, and real feelings 🔥",
+      "slug": "bongo-flava",
+      "image": "https://images.hivisasa.com/1200/9g5YDs7nxUchibu.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Soul",
+      "description": "Deep, heartfelt music that speaks straight to the emotions 💙",
+      "slug": "soul",
+      "image": "https://i.ytimg.com/vi/P0OozGOmFDM/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAsTWw7fQgU1CuNhT01CNZ2Svha2A"
+    },
+    {
+      "id": 6,
+      "name": "Riddim",
+      "description": "All your favorite riddims in one collection",
+      "slug": "riddim",
+      "image": "https://i1.sndcdn.com/artworks-4m2ZxJnSIguoiICc-uQn5DQ-t500x500.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Electric/House/Tropical",
+      "description": "The overall sound is relaxed and carefree, designed to evoke feelings of a tropical vacation.",
+      "slug": "electrichousetropical",
+      "image": "https://images.unsplash.com/photo-1586902197503-e71026292412?q=80&w=1744&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    }
+  ],
+  "playlists": [
+    {
+      "id": 1,
+      "category_id": 2,
+      "title": "RnB Forever",
+      "description": "Timeless tracks that still hit harder than most new drops.",
+      "spotify_link": "https://open.spotify.com/playlist/6hsTX8AeyZikJrzO78DxEX?si=49e6c9c5d3504336",
+      "drive_link": null,
+      "image": "https://i.etsystatic.com/36820080/r/il/af7a9d/4052289146/il_570xN.4052289146_1drk.jpg",
+      "slug": "rnb-forever"
+    },
+    {
+      "id": 2,
+      "category_id": 6,
+      "title": "All best riddim Compilation",
+      "description": "Hand picked riddims from all series",
+      "spotify_link": "https://open.spotify.com/playlist/1JTkwXvmrsNr5pBWDJaszS?si=c88d049e71b448c9",
+      "drive_link": "https://drive.google.com/drive/folders/1F4rYey4D84IwbMope7yxQ3Vsy6uFDqut?usp=drive_link",
+      "image": "https://i1.sndcdn.com/artworks-jUpocCA9BVZ4Wxjt-EaS3AA-t500x500.jpg",
+      "slug": "all-best-riddim-compilation"
+    },
+    {
+      "id": 3,
+      "category_id": 1,
+      "title": "Best Nolstagic Reggae",
+      "description": "Pure love reggae,",
+      "spotify_link": "https://open.spotify.com/playlist/7qhiyvZL0P6k0bxJmja8x9?si=9ddf904daa4744d5",
+      "drive_link": null,
+      "image": "https://m.media-amazon.com/images/I/81kaLyhsxXL._UF1000,1000_QL80_.jpg",
+      "slug": "best-nolstagic-reggae"
+    },
+    {
+      "id": 4,
+      "category_id": 2,
+      "title": "Soothing Rnb/pop",
+      "description": "Type of playlist that will put you in a chilling mood.",
+      "spotify_link": "https://open.spotify.com/playlist/4rhrOAlqFxZHQTky1hWizR?si=975dca98d85940ae",
+      "drive_link": null,
+      "image": "https://plus.unsplash.com/premium_photo-1709311418063-35661a7e3343?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "slug": "soothing-rnbpop"
+    },
+    {
+      "id": 5,
+      "category_id": 2,
+      "title": "Throwbacks Rnb/Pop",
+      "description": "Playlist that tends to bring you down the memory lane of your favorite radio stations",
+      "spotify_link": "https://open.spotify.com/playlist/0xy5AJFHCA17Ezh7FvpVbf?si=b8edccddacda49dc",
+      "drive_link": null,
+      "image": "https://images.unsplash.com/photo-1610080416085-fb8c622c176b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "slug": "throwbacks-rnbpop"
+    },
+    {
+      "id": 6,
+      "category_id": 7,
+      "title": "Best electric/tropical musical playlist",
+      "description": "Only meant to uplift your mood",
+      "spotify_link": "https://open.spotify.com/playlist/1M06fhygKLjaXaZ9xRoxAY?si=9e50ae56003e43bf",
+      "drive_link": null,
+      "image": "https://images.unsplash.com/photo-1675972418297-29d4e440d63b?q=80&w=1838&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "slug": "best-electrictropical-musical-playlist"
+    },
+    {
+      "id": 7,
+      "category_id": 3,
+      "title": "Bongo love Playlist",
+      "description": "All your favorite bongo music compile into one playlist",
+      "spotify_link": "https://open.spotify.com/playlist/0x4jSgDvDG4FV1nah2X8s0?si=ce7f9854186f444e",
+      "drive_link": null,
+      "image": "https://imvahonshya.co.rw/wp-content/uploads/2025/02/Mbosso-.jpg",
+      "slug": "bongo-love-playlist"
+    },
+    {
+      "id": 8,
+      "category_id": 2,
+      "title": "Rana Del Rey Special",
+      "description": "For few Rana Del Rey fans, this playlist is for you",
+      "spotify_link": "https://open.spotify.com/playlist/4Eslm73EqkxQpE2dEeTDBv?si=4815ccd7a64f4681",
+      "drive_link": null,
+      "image": "https://i.ytimg.com/vi/Bag1gUxuU0g/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBvseaZaTZnGm6T8eku2pueedvBiQ",
+      "slug": "rana-del-rey-special"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Reggae",
+    "description": "Smooth roots reggae vibes 🌿",
+    "slug": "reggae",
+    "image": "https://www.liveabout.com/thmb/psWmh528aoW2qeeQqxxflTemfvs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/bob-marley-bird-song-51178670-resized-58a6ee383df78c345b627ebd.jpg"
+  },
+  {
+    "id": 2,
+    "name": "RnB/Pop",
+    "description": "Sweet melodies and soulful vocals for late night chills 🎶",
+    "slug": "rnb",
+    "image": "https://i.ytimg.com/vi/em7v8kduYNA/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDdgC-YYfv5wdN7lO1lRFFot9kOjA"
+  },
+  {
+    "id": 3,
+    "name": "Bongo Flava",
+    "description": "East African flavor with energy, groove, and real feelings 🔥",
+    "slug": "bongo-flava",
+    "image": "https://images.hivisasa.com/1200/9g5YDs7nxUchibu.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Soul",
+    "description": "Deep, heartfelt music that speaks straight to the emotions 💙",
+    "slug": "soul",
+    "image": "https://i.ytimg.com/vi/P0OozGOmFDM/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAsTWw7fQgU1CuNhT01CNZ2Svha2A"
+  },
+  {
+    "id": 6,
+    "name": "Riddim",
+    "description": "All your favorite riddims in one collection",
+    "slug": "riddim",
+    "image": "https://i1.sndcdn.com/artworks-4m2ZxJnSIguoiICc-uQn5DQ-t500x500.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Electric/House/Tropical",
+    "description": "The overall sound is relaxed and carefree, designed to evoke feelings of a tropical vacation.",
+    "slug": "electrichousetropical",
+    "image": "https://images.unsplash.com/photo-1586902197503-e71026292412?q=80&w=1744&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  }
+]
