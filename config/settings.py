@@ -67,9 +67,12 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
-# Check if we're in production (Render) or development
-if os.environ.get('DATABASE_URL'):
-    # Production - Use PostgreSQL from DATABASE_URL
+# Check if we're running on Render
+ON_RENDER = os.environ.get('RENDER', False)
+
+if ON_RENDER:
+    # Production - Use PostgreSQL
+    import dj_database_url
     DATABASES = {
         'default': dj_database_url.config(
             conn_max_age=600,
@@ -77,7 +80,7 @@ if os.environ.get('DATABASE_URL'):
         )
     }
 else:
-    # Development - Use SQLite locally
+    # Development - Use SQLite
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
