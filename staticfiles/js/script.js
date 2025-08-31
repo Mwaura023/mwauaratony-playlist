@@ -73,3 +73,43 @@ function scrollToCategories() {
         window.scrollBy(0, 500);
     }
 }
+
+
+
+
+
+// Track playlist clicks
+document.addEventListener('DOMContentLoaded', function() {
+    // Track Spotify clicks
+    document.querySelectorAll('a[href*="spotify.com"]').forEach(link => {
+        link.addEventListener('click', function() {
+            const playlistName = this.closest('.card').querySelector('.card-title').textContent;
+            gtag('event', 'spotify_click', {
+                'event_category': 'playlist',
+                'event_label': playlistName
+            });
+        });
+    });
+
+    // Track Download clicks
+    document.querySelectorAll('a[href*="drive.google.com"]').forEach(link => {
+        link.addEventListener('click', function() {
+            const playlistName = this.closest('.card').querySelector('.card-title').textContent;
+            gtag('event', 'download_click', {
+                'event_category': 'playlist',
+                'event_label': playlistName
+            });
+        });
+    });
+
+    // Track category views
+    document.querySelectorAll('.category-card a').forEach(link => {
+        link.addEventListener('click', function() {
+            const categoryName = this.closest('.card').querySelector('.card-title').textContent;
+            gtag('event', 'category_view', {
+                'event_category': 'navigation',
+                'event_label': categoryName
+            });
+        });
+    });
+});
