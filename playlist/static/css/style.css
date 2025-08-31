@@ -1,0 +1,298 @@
+/* ===== VARIABLES ===== */
+:root {
+    --primary-gradient: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+    --secondary-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    --dark-bg: #0f0f1a;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --text-light: #ffffff;
+    --text-muted: #b8b8b8;
+}
+
+/* ===== BASE STYLES ===== */
+body.dark-theme {
+    background: var(--dark-bg);
+    color: var(--text-light);
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    padding-top: 80px;
+}
+
+.bg-dark-blur {
+    background: rgba(15, 15, 26, 0.95) !important;
+    backdrop-filter: blur(10px);
+}
+
+/* ===== NAVBAR ===== */
+.navbar-brand.brand-logo {
+    font-family: 'Righteous', cursive;
+    font-size: 1.8rem;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.navbar-brand.brand-logo span {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin: 0 10px;
+}
+
+.nav-link:hover {
+    transform: translateY(-2px);
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ===== HERO SECTION ===== */
+.hero-section {
+    background: 
+        linear-gradient(135deg, #6a11cb 0%, #2575fc 100%),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="music" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path fill="rgba(255,255,255,0.1)" d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 2c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6 2.7-6 6-6z"/></pattern></defs><rect width="100" height="100" fill="url(%23music)"/></svg>');
+    background-blend-mode: overlay;
+    border-radius: 20px;
+    padding: 4rem 2rem;
+    margin: 2rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* REMOVE the ::before pseudo-element completely - delete these lines if they exist */
+.hero-section::before {
+    display: none; /* Completely remove it */
+}
+
+.hero-section h1 {
+    font-family: 'Righteous', cursive;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    color: white;
+}
+
+.hero-section .lead {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    color: white;
+}
+
+.hero-section p {
+    color: white;
+}
+
+/* ===== CATEGORY CARDS ===== */
+.category-grid {
+    padding: 2rem 0;
+}
+
+.category-card {
+    background: var(--card-bg);
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.category-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.category-card img {
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.category-card:hover img {
+    transform: scale(1.1);
+}
+
+.category-card .card-body {
+    padding: 1.5rem;
+}
+
+.category-card .card-title {
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.category-card .card-text {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+    background: var(--primary-gradient);
+    border: none;
+    border-radius: 25px;
+    padding: 0.8rem 2rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    margin-top: 4rem;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-link {
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-section .lead {
+        font-size: 1.1rem;
+    }
+    
+    .category-card {
+        margin-bottom: 2rem;
+    }
+}
+
+
+
+/* ===== CATEGORY PAGE STYLES ===== */
+.category-header {
+    background: var(--secondary-gradient);
+    border-radius: 20px;
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.category-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="waves" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path fill="rgba(255,255,255,0.1)" d="M0 10C5 5 10 0 20 0C30 0 35 5 40 10C45 15 50 20 60 20C70 20 75 15 80 10C85 5 90 0 100 0V20H0z"/></pattern></defs><rect width="100" height="100" fill="url(%23waves)"/></svg>');
+    opacity: 0.1;
+}
+
+/* Playlist Cards */
+.playlist-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.playlist-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.playlist-card .card-img-top {
+    transition: transform 0.3s ease;
+}
+
+.playlist-card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+.playlist-card .card-footer {
+    padding: 1rem 1.5rem;
+}
+
+/* Button Styles */
+.btn-spotify {
+    background: linear-gradient(135deg, #1DB954 0%, #1ed760 100%);
+    border: none;
+    color: white;
+    border-radius: 25px;
+    padding: 0.6rem 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-spotify:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(29, 185, 84, 0.3);
+    color: white;
+}
+
+.btn-drive {
+    background: linear-gradient(135deg, #4285F4 0%, #34A853 100%);
+    border: none;
+    color: white;
+    border-radius: 25px;
+    padding: 0.6rem 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-drive:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(66, 133, 244, 0.3);
+    color: white;
+}
+
+/* Empty State */
+.empty-state {
+    padding: 3rem 1rem;
+    color: var(--text-muted);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .playlist-card .card-footer .d-flex {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .btn-spotify,
+    .btn-drive {
+        width: 100%;
+    }
+}
