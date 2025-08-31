@@ -4,4 +4,5 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('category/<slug:slug>/', views.category_detail, name='category_detail'),
+    path('admin/reset-password/', views.reset_admin_password, name='reset_password'),
 ]
