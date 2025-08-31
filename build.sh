@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
-# Simple build script for Render
+# Exit on error
+set -o errexit
 
-echo "=== Installing dependencies ==="
+# Install dependencies
 pip install -r requirements.txt
 
-echo "=== Collecting static files ==="
-python manage.py collectstatic --noinput
+# Collect static files
+python manage.py collectstatic --no-input
 
-echo "=== Applying database migrations ==="
+# Apply database migrations
 python manage.py migrate

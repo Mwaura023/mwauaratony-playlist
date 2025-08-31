@@ -32,7 +32,7 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1', 
-    '.onrender.com',          # For Render deployment
+    'mwauaratony-playlist.onrender.com',          # For Render deployment
     '.pythonanywhere.com',    # For PythonAnywhere
     '127.0.0.1:8000',        # Your local server
     'localhost:8000',        # Your local server
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
