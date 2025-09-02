@@ -43,3 +43,7 @@ def home(request):
 def category_detail(request, slug):
     category = get_object_or_404(Category, slug=slug)
     return render(request, 'playlist/category.html', {'category': category})
+
+
+def health_check(request):
+    return HttpResponse("OK", status=200)
