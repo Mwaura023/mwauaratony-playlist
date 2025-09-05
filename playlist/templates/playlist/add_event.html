@@ -99,7 +99,11 @@
 
 <div class="add-event-container">
     <h2>🎶 Add Your Event</h2>
-    <form method="post">
+    <form method="post" onsubmit="gtag('event', 'submit_add_event', {
+        'event_category': 'User Interaction',
+        'event_label': 'Add Event Form',
+        'value': 1
+    });">
         {% csrf_token %}
         
         <!-- Event Form -->
