@@ -66,7 +66,7 @@
     }
 
     .event-card {
-        background: #1e293b;
+        background: linear-gradient(145deg, #1e293b, #0f172a);
         border-radius: 12px;
         overflow: hidden;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -84,9 +84,8 @@
 
     .event-image img {
         width: 100%;
-        height: 180px;
+        height: 200px;
         object-fit: cover;
-        opacity: 0.95;
     }
 
     .event-badge {
@@ -94,101 +93,77 @@
         top: 12px;
         left: 12px;
         font-size: 0.75rem;
-        padding: 4px 8px;
+        padding: 4px 10px;
         border-radius: 6px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        background: rgba(0, 0, 0, 0.4);
-        color: #f1f5f9;
+        font-weight: 600;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
     }
 
-    /* Genre-specific badge colors */
-    .event-badge.reggae {
-        border-color: #22c55e;
-        color: #22c55e;
-    }
-
-    .event-badge.rnb {
-        border-color: #a855f7;
-        color: #a855f7;
-    }
-
-    .event-badge.soul {
-        border-color: #3b82f6;
-        color: #3b82f6;
-    }
-
-    .event-badge.rhumba {
-        border-color: #f59e0b;
-        color: #f59e0b;
-    }
-
-    .event-badge.mugithi {
-        border-color: #e11d48;
-        color: #e11d48;
-    }
-
-    .event-content {
-        padding: 15px;
-    }
+    /* Genre colors */
+    .event-badge.reggae { background: #22c55e; }
+    .event-badge.rnb { background: #a855f7; }
+    .event-badge.soul { background: #3b82f6; }
+    .event-badge.rhumba { background: #f59e0b; }
+    .event-badge.mugithi { background: #e11d48; }
 
     .event-title {
-        font-size: 1.2rem;
-        margin-bottom: 8px;
-        font-weight: 600;
-        color: #f1f5f9;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        font-weight: 700;
+        color: #f4ed68; /* neon cyan */
     }
 
     .event-meta {
-        font-size: 0.85rem;
-        color: #94a3b8;
+        font-size: 0.9rem;
         display: flex;
         flex-wrap: wrap;
-        gap: 12px;
-        margin-bottom: 10px;
+        gap: 15px;
+        margin-bottom: 12px;
     }
 
-    .event-details {
-        margin-bottom: 10px;
-        font-size: 0.9rem;
-        color: #d1d5db;
+    .event-meta i {
+        margin-right: 5px;
     }
 
-    .price {
+    .event-description {
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+        color: #cbd5e1;
+    }
+
+    .ticket-box {
+        background: #0f172a;
+        border: 1px solid #334155;
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+
+    .ticket-box h6 {
+        margin-bottom: 8px;
         font-weight: 600;
-        color: #f1f5f9;
+        color: #f472b6; /* neon pink */
     }
 
-    .price.affordable {
-        color: #22c55e;
+    .ticket-box li {
+        margin-bottom: 4px;
     }
 
-    .event-actions .btn {
-        display: inline-block;
-        padding: 8px 14px;
-        border-radius: 6px;
-        font-size: 0.85rem;
-        font-weight: 500;
-        text-decoration: none;
-        margin-right: 6px;
-        transition: all 0.3s;
+    .ticket-box span {
+        color: #22d3ee; /* electric cyan */
+        font-weight: 600;
     }
 
     .btn-ticket {
-        background: #ef4444;
+        background: #f97316; /* neon orange */
         color: #fff;
+        font-weight: 600;
+        border: none;
     }
 
     .btn-ticket:hover {
-        background: #dc2626;
-    }
-
-    .btn-playlist {
-        background: #1db954;
-        color: #fff;
-    }
-
-    .btn-playlist:hover {
-        background: #15803d;
+        background: #ea580c;
     }
 
     /* Empty State */
@@ -220,7 +195,7 @@
         background: #2563eb;
     }
 
-    /* ---------- Responsive Filter Panel ---------- */
+    /* Filters */
     .filter-toggle {
         display: none;
         margin-bottom: 15px;
@@ -242,14 +217,8 @@
     }
 
     @media (max-width: 768px) {
-        .col-md-3 {
-            display: none;
-        }
-
-        .filter-toggle {
-            display: block;
-        }
-
+        .col-md-3 { display: none; }
+        .filter-toggle { display: block; }
         .filters-mobile {
             display: none;
             background: #1b263b;
@@ -258,10 +227,7 @@
             border-radius: 10px;
             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
         }
-
-        .filters-mobile.active {
-            display: block;
-        }
+        .filters-mobile.active { display: block; }
     }
 </style>
 
@@ -274,43 +240,34 @@
             <a href="{% url 'add_event' %}" class="btn btn-notify mt-3">➕ Add Event</a>
         </div>
 
-        <!-- Filter toggle button for mobile -->
+        <!-- Mobile Filters -->
         <div class="filter-toggle d-md-none">
             <button onclick="document.querySelector('.filters-mobile').classList.toggle('active')">
                 🎛 Filter Events
             </button>
         </div>
 
-        <!-- Mobile filters -->
         <div class="filters-mobile">
             <h4 class="sidebar-title">Pick Your Vibe</h4>
             <ul class="list-unstyled">
-                <li><a href="?genre=" class="category-link {% if not selected_genre %}active{% endif %}">All Vibes</a>
-                </li>
+                <li><a href="?genre=" class="category-link {% if not selected_genre %}active{% endif %}">All Vibes</a></li>
                 {% for genre_value, genre_name in genres %}
                 <li>
                     <a href="?genre={{ genre_value }}{% if selected_price %}&price={{ selected_price }}{% endif %}"
-                        class="category-link {% if selected_genre == genre_value %}active{% endif %}">
+                       class="category-link {% if selected_genre == genre_value %}active{% endif %}">
                         {{ genre_name }}
                     </a>
                 </li>
                 {% endfor %}
             </ul>
-
             <h4 class="sidebar-title mt-4">Filter by Price</h4>
             <ul class="list-unstyled">
                 <li><a href="?price=free{% if selected_genre %}&genre={{ selected_genre }}{% endif %}"
-                        class="category-link {% if selected_price == 'free' %}active{% endif %}">Free</a></li>
-                <li><a href="?price=under-500{% if selected_genre %}&genre={{ selected_genre }}{% endif %}"
-                        class="category-link {% if selected_price == 'under-500' %}active{% endif %}">Under 500</a></li>
-                <li><a href="?price=500-1000{% if selected_genre %}&genre={{ selected_genre }}{% endif %}"
-                        class="category-link {% if selected_price == '500-1000' %}active{% endif %}">500 - 1000</a></li>
-                <li><a href="?price=1000-2000{% if selected_genre %}&genre={{ selected_genre }}{% endif %}"
-                        class="category-link {% if selected_price == '1000-2000' %}active{% endif %}">1000 - 2000</a>
-                </li>
-                <li><a href="?price=above-2000{% if selected_genre %}&genre={{ selected_genre }}{% endif %}"
-                        class="category-link {% if selected_price == 'above-2000' %}active{% endif %}">Above 2000</a>
-                </li>
+                       class="category-link {% if selected_price == 'free' %}active{% endif %}">Free</a></li>
+                <li><a href="?price=under-1000{% if selected_genre %}&genre={{ selected_genre }}{% endif %}"
+                       class="category-link {% if selected_price == 'under-1000' %}active{% endif %}">Under 1000</a></li>
+                <li><a href="?price=above-1000{% if selected_genre %}&genre={{ selected_genre }}{% endif %}"
+                       class="category-link {% if selected_price == 'above-1000' %}active{% endif %}">Above 1000</a></li>
             </ul>
         </div>
 
@@ -320,12 +277,11 @@
                 <div class="category-sidebar">
                     <h4 class="sidebar-title">Pick Your Vibe</h4>
                     <ul class="list-unstyled">
-                        <li><a href="?genre=" class="category-link {% if not selected_genre %}active{% endif %}">All
-                                Vibes</a></li>
+                        <li><a href="?genre=" class="category-link {% if not selected_genre %}active{% endif %}">All Vibes</a></li>
                         {% for genre_value, genre_name in genres %}
                         <li>
                             <a href="?genre={{ genre_value }}{% if selected_price %}&price={{ selected_price }}{% endif %}"
-                                class="category-link {% if selected_genre == genre_value %}active{% endif %}">
+                               class="category-link {% if selected_genre == genre_value %}active{% endif %}">
                                 {{ genre_name }}
                             </a>
                         </li>
@@ -334,24 +290,12 @@
 
                     <h4 class="sidebar-title mt-4">Filter by Price</h4>
                     <ul class="list-unstyled">
-                        <li>
-                            <a href="?price=free{% if selected_genre %}&genre={{ selected_genre }}{% endif %}"
-                                class="category-link {% if selected_price == 'free' %}active{% endif %}">
-                                Free
-                            </a>
-                        </li>
-                        <li>
-                            <a href="?price=under-1000{% if selected_genre %}&genre={{ selected_genre }}{% endif %}"
-                                class="category-link {% if selected_price == 'under-1000' %}active{% endif %}">
-                                Under 1000
-                            </a>
-                        </li>
-                        <li>
-                            <a href="?price=above-1000{% if selected_genre %}&genre={{ selected_genre }}{% endif %}"
-                                class="category-link {% if selected_price == 'above-1000' %}active{% endif %}">
-                                Above 1000
-                            </a>
-                        </li>
+                        <li><a href="?price=free{% if selected_genre %}&genre={{ selected_genre }}{% endif %}"
+                               class="category-link {% if selected_price == 'free' %}active{% endif %}">Free</a></li>
+                        <li><a href="?price=under-1000{% if selected_genre %}&genre={{ selected_genre }}{% endif %}"
+                               class="category-link {% if selected_price == 'under-1000' %}active{% endif %}">Under 1000</a></li>
+                        <li><a href="?price=above-1000{% if selected_genre %}&genre={{ selected_genre }}{% endif %}"
+                               class="category-link {% if selected_price == 'above-1000' %}active{% endif %}">Above 1000</a></li>
                     </ul>
                 </div>
             </div>
@@ -361,41 +305,44 @@
                 <div class="events-grid">
                     {% for event in events %}
                     <div class="event-card">
+                        <!-- Event Image -->
                         <div class="event-image">
                             {% if event.image_url %}
                             <img src="{{ event.image_url }}" alt="{{ event.name }}">
                             {% else %}
-                            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=250&fit=crop&crop=center"
-                                alt="{{ event.name }}">
+                            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=250&fit=crop&crop=center" alt="{{ event.name }}">
                             {% endif %}
                             <span class="event-badge {{ event.genre|lower }}">{{ event.genre|title }}</span>
                         </div>
-                        <div class="event-content">
+
+                        <!-- Card Content -->
+                        <div class="p-4">
                             <h3 class="event-title">{{ event.name }}</h3>
                             <div class="event-meta">
-                                <span class="venue"><i class="fas fa-map-marker-alt"></i> {{ event.venue }}</span>
-                                <span class="date"><i class="fas fa-calendar"></i> {{ event.date|date:"M d, Y" }}</span>
-                                <span class="time"><i class="fas fa-clock"></i> {{ event.date|date:"g:i A" }}</span>
+                                <span><i class="fas fa-map-marker-alt" style="color:#f43f5e;"></i> {{ event.venue }}</span>
+                                <span><i class="fas fa-calendar" style="color:#facc15;"></i> {{ event.date|date:"M d, Y" }}</span>
+                                <span><i class="fas fa-clock" style="color:#34d399;"></i> {{ event.date|date:"g:i A" }}</span>
                             </div>
-                            <div class="event-details">
-                                <h5>Tickets</h5>
-                                <ul>
+
+                            {% if event.description %}
+                            <p class="event-description">{{ event.description|truncatewords:25 }}</p>
+                            {% endif %}
+
+                            <div class="ticket-box">
+                                <h6>🎟 Tickets</h6>
+                                <ul class="list-unstyled mb-0">
                                     {% for ticket in event.tickets.all %}
-                                    <li>{{ ticket.label }}: {{ ticket.price }}</li>
+                                    <li>{{ ticket.label }}: <span>{{ ticket.price }}</span></li>
                                     {% empty %}
-                                    <li>Pricing info coming soon</li>
+                                    <li><span class="text-muted">Pricing info coming soon</span></li>
                                     {% endfor %}
                                 </ul>
                             </div>
-                            <div class="event-actions">
+
+                            <div class="event-actions d-flex gap-2">
                                 {% if event.ticket_link %}
-                                <a href="{{ event.ticket_link }}" class="btn btn-ticket" target="_blank">
-                                    <i class="fas fa-ticket-alt"></i> Get Tickets
-                                </a>
-                                {% endif %}
-                                {% if event.spotify_playlist %}
-                                <a href="{{ event.spotify_playlist }}" class="btn btn-playlist" target="_blank">
-                                    <i class="fab fa-spotify"></i> Playlist
+                                <a href="{{ event.ticket_link }}" class="btn btn-ticket flex-fill">
+                                    <i class="fas fa-ticket-alt"></i> Tickets
                                 </a>
                                 {% endif %}
                             </div>
@@ -406,21 +353,26 @@
                         <div class="empty-icon">🎵</div>
                         <h3>No Events Yet</h3>
                         <p>Stay tuned for Nairobi’s next big vibes!</p>
+                        <a href="mailto:twigamax023@gmail.com?subject=Notify%20me%20about%20events" class="btn btn-notify">📩 Get Notified</a>
                     </div>
                     {% endfor %}
                 </div>
             </div>
         </div>
     </div>
+
     <!-- Inquiry Section -->
     <div class="inquiry-section text-center mt-5" style="padding: 2.5rem; background:#16213e; border-radius: 12px;">
         <h3 style="color:#fff; margin-bottom: 1rem;">Need Help or Have Questions?</h3>
-        <p style="color:#cbd5e1; margin-bottom: 1.5rem;">
-            For inquiries about events, partnerships, or suggestions, feel free to reach out.
-        </p>
-        <a href="mailto:twigamax023@gmail.com" class="btn btn-primary btn-lg">
-            📧 Email Us
-        </a>
+        <p style="color:#cbd5e1; margin-bottom: 1.5rem;">For inquiries about events, partnerships, or suggestions, reach out below:</p>
+        <div class="dropdown d-inline-block">
+            <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                📩 Contact Us
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="mailto:twigamax023@gmail.com">Email Us: twigamax023@gmail.com</a></li>
+            </ul>
+        </div>
     </div>
 </section>
 
@@ -430,5 +382,4 @@
         'event_label': 'Events Page Viewed'
     });
 </script>
-
 {% endblock %}
