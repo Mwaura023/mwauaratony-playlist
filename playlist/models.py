@@ -43,10 +43,12 @@ class Event(models.Model):
         ('mugithi', 'Mugithi'),
         ('rnb', 'RnB'),
         ('soul', 'Soul'),
+        ('other', 'Other'),
     ]
 
     name = models.CharField(max_length=200)
     genre = models.CharField(max_length=50, choices=GENRE_CHOICES, default='reggae')
+    custom_genre = models.CharField(max_length=100, blank=True, null=True)
     date = models.DateTimeField()
     venue = models.CharField(max_length=200)
     description = models.TextField(blank=True)

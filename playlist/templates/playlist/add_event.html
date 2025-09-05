@@ -109,6 +109,12 @@
         <!-- Event Form -->
         {{ form.as_p }}
 
+        <!-- Custom Genre Field (hidden unless "Other" is selected) -->
+        <div class="form-group" id="custom-genre-field" style="display:none;">
+            <label for="id_custom_genre">Custom Genre</label>
+            <input type="text" name="custom_genre" id="id_custom_genre" class="form-control" placeholder="Enter your event type">
+        </div>
+
         <!-- Ticket Options -->
         <h4 style="margin-top:20px;">🎟 Ticket Options</h4>
         <div id="tickets">
@@ -163,5 +169,24 @@ function removeTicket(button) {
         totalForms.value = parseInt(totalForms.value) - 1;
     }
 }
+
+// Toggle custom genre input
+document.addEventListener("DOMContentLoaded", function() {
+    const genreSelect = document.getElementById("id_genre");
+    const customGenreField = document.getElementById("custom-genre-field");
+
+    function toggleCustomGenre() {
+        if (genreSelect.value === "other") {
+            customGenreField.style.display = "block";
+        } else {
+            customGenreField.style.display = "none";
+        }
+    }
+
+    if (genreSelect) {
+        genreSelect.addEventListener("change", toggleCustomGenre);
+        toggleCustomGenre();
+    }
+});
 </script>
 {% endblock %}

@@ -18,7 +18,17 @@ class EventForm(forms.ModelForm):
 
     class Meta:
         model = Event
-        fields = ['name', 'genre', 'venue', 'description', 'ticket_link', 'image_url']
+        fields = ['name', 'genre', 'custom_genre', 'venue', 'description', 'ticket_link', 'image_url']
+    
+    def clean(self):
+        cleaned_data = super().clean()
+        genre = cleaned_data.get('genre')
+        custom_genre = cleaned_data.get('custom_genre')
+
+        if genre == 'other' and not custom_genre:
+            self.add_error('custom_genre', 'Please specify the event type if you select Other.')
+
+        return cleaned_data
 
     def save(self, commit=True):
         instance = super().save(commit=False)

@@ -381,9 +381,9 @@
                                 <h5>Tickets</h5>
                                 <ul>
                                     {% for ticket in event.tickets.all %}
-                                        <li>{{ ticket.label }}: {{ ticket.price }}</li>
+                                    <li>{{ ticket.label }}: {{ ticket.price }}</li>
                                     {% empty %}
-                                        <li>Pricing info coming soon</li>
+                                    <li>Pricing info coming soon</li>
                                     {% endfor %}
                                 </ul>
                             </div>
@@ -406,12 +406,21 @@
                         <div class="empty-icon">🎵</div>
                         <h3>No Events Yet</h3>
                         <p>Stay tuned for Nairobi’s next big vibes!</p>
-                        <a href="#" class="btn-notify">Get Notified</a>
                     </div>
                     {% endfor %}
                 </div>
             </div>
         </div>
+    </div>
+    <!-- Inquiry Section -->
+    <div class="inquiry-section text-center mt-5" style="padding: 2.5rem; background:#16213e; border-radius: 12px;">
+        <h3 style="color:#fff; margin-bottom: 1rem;">Need Help or Have Questions?</h3>
+        <p style="color:#cbd5e1; margin-bottom: 1.5rem;">
+            For inquiries about events, partnerships, or suggestions, feel free to reach out.
+        </p>
+        <a href="mailto:twigamax023@gmail.com" class="btn btn-primary btn-lg">
+            📧 Email Us
+        </a>
     </div>
 </section>
 
