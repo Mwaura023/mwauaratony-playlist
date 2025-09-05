@@ -4,41 +4,75 @@
 {% block title %}Home - MwauraTony's Playlist Hub{% endblock %}
 
 {% block content %}
-<!-- Hero Section - Inline Styles Only -->
+<!-- Hero Section -->
 <section style="
     background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
     border-radius: 20px;
-    padding: 4rem 2rem;
+    padding: 5rem 2rem;
     margin: 2rem 0;
     text-align: center;
+    font-family: 'Poppins', sans-serif;
 ">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <h1 class="display-3 fw-bold" style="color: white;">🎵 MwauraTony's Playlist Hub</h1>
-                <p class="lead mb-4" style="color: white;">Curating the finest music vibes for my TikTok family</p>
-                <p class="mb-4" style="color: white;">Reggae • RnB • Bongos • Soul • Hip Hop • Riddim</p>
-                <div class="d-flex gap-3 justify-content-center">
-                    <button onclick="window.scrollBy(0, 500)" class="btn btn-primary btn-lg">
-                        Explore Categories
-                    </button>
-                    <a href="https://tiktok.com/@MwauraTony" target="_blank" class="btn btn-outline-light btn-lg">
-                        <i class="fab fa-tiktok"></i> Follow Me
-                    </a>
+            <div class="col-lg-9">
+                <h1 style="color: #fff; font-size: 3.2rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -1px;">
+                    🎵 Your Personal Vibe Vault
+                </h1>
+                <p style="color: #f3f4f6; font-size: 1.15rem; margin-bottom: 1.5rem; line-height: 1.7;">
+                    Curated playlists and the hottest music events in Nairobi. 
+                    From reggae and riddim to RnB, soul, and beyond — your vibes, your way.
+                </p>
+                <p style="color: #dbeafe; font-size: 0.95rem; margin-bottom: 2.5rem;">
+                    Reggae • RnB • Bongos • Soul • Hip Hop • Riddim
+                </p>
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <a href="#categories" class="btn-hero">Playlists</a>
+                    <a href="{% url 'event_finder' %}" class="btn-hero btn-alt">Events</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+<style>
+    .btn-hero {
+        padding: 0.85rem 2.2rem;
+        border-radius: 9999px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        background: #fff;
+        color: #6a11cb;
+        border: 2px solid transparent;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .btn-hero:hover {
+        background: #f1f5f9;
+        color: #2575fc;
+        transform: translateY(-2px);
+    }
+    .btn-hero.btn-alt {
+        background: transparent;
+        border: 2px solid #fff;
+        color: #fff;
+    }
+    .btn-hero.btn-alt:hover {
+        background: #fff;
+        color: #2575fc;
+    }
+</style>
+
+
+
 <!-- Categories Section -->
 <section id="categories" class="category-grid">
     <div class="container">
         <div class="text-center mb-5">
             <h2 class="display-5 fw-bold mb-3">🎧 Music Categories</h2>
-            <p class="text-muted">Discover playlists curated with love and good vibes</p>
+            <p class="text-muted" style="color: #cccccc !important;">Discover playlists curated with love and good vibes</p>
         </div>
-
         <div class="row">
             {% for category in categories %}
             <div class="col-lg-4 col-md-6 mb-4">
@@ -51,7 +85,7 @@
                     {% endif %}
                     <div class="card-body text-center">
                         <h5 class="card-title">{{ category.name }}</h5>
-                        <p class="card-text">{{ category.description|truncatechars:120 }}</p>
+                        <p class="card-text" style="color: var(--text-light);">{{ category.description|truncatechars:120 }}</p>
                         <a href="{% url 'category_detail' category.slug %}" class="btn btn-primary">
                             Explore {{ category.name }}
                             <i class="fas fa-arrow-right ms-2"></i>
@@ -64,19 +98,29 @@
     </div>
 </section>
 
+<!-- Event Teaser Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">🎤 Reggae & Music Events</h2>
+            <p class="text-muted" style="color: #cccccc !important;">Feel the rhythm at Nairobi’s hottest reggae nights, plus rhumba, mugithi, RnB, and soul events to keep you grooving!</p>
+            <a href="{% url 'event_finder' %}" class="btn btn-primary">Find Events</a>
+        </div>
+    </div>
+</section>
+
 <!-- About Section -->
 <section id="about" class="py-5">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <h2 class="display-5 fw-bold mb-4">About MwauraTony</h2>
-                <p class="lead mb-4">
-                    Hey TikTok fam! I'm MwauraTony, your go-to for the hottest music vibes across genres. 
-                    From smooth Reggae to lit Hip Hop, I curate playlists that hit different.
+                <p class="lead mb-4" style="color: var(--text-light);">
+                    Hey TikTok fam! I'm MwauraTony, your vibe curator for reggae, riddims, and beyond. 
+                    From soulful playlists to epic music events, I’ve got your Nairobi music scene covered!
                 </p>
-                <p class="text-muted">
-                    Join 11K+ followers who trust my taste in music. All playlists available on Spotify 
-                    or downloadable for offline listening.
+                <p class="text-muted" style="color: var(--text-light);">
+                    Join 12K+ followers who trust my taste. Explore Spotify playlists and catch live reggae, RnB, and more!
                 </p>
             </div>
             <div class="col-lg-6 text-center">

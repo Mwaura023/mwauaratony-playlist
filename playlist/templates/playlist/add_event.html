@@ -1,0 +1,163 @@
+{% extends "playlist/base.html" %}
+
+{% block title %}Add Event - Vibe Vault{% endblock %}
+
+{% block content %}
+<style>
+    .add-event-container {
+        max-width: 800px;
+        margin: 40px auto;
+        background: #1b263b;
+        padding: 30px;
+        border-radius: 14px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+        color: #e2e8f0;
+    }
+    .add-event-container h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #f1f5f9;
+    }
+    .form-group {
+        margin-bottom: 18px;
+    }
+    label {
+        font-weight: 500;
+        margin-bottom: 6px;
+        display: block;
+        font-size: 0.9rem;
+    }
+    input, textarea, select {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 6px;
+        border: 1px solid #334155;
+        background: #0f172a;
+        color: #e2e8f0;
+        font-size: 0.95rem;
+    }
+    input:focus, textarea:focus, select:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 6px rgba(59,130,246,0.5);
+    }
+
+    /* Ticket option styling */
+    .ticket-form {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 12px;
+        padding: 12px;
+        background: #0f172a;
+        border-radius: 6px;
+        align-items: center;
+    }
+    .ticket-form input {
+        flex: 1;
+    }
+    .remove-ticket {
+        background: #ef4444;
+        border: none;
+        color: #fff;
+        padding: 6px 10px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    .remove-ticket:hover {
+        background: #dc2626;
+    }
+
+    .add-ticket-btn, .submit-btn {
+        display: inline-block;
+        padding: 10px 18px;
+        border: none;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        cursor: pointer;
+        margin-top: 12px;
+        transition: all 0.3s;
+    }
+    .add-ticket-btn {
+        background: #3b82f6;
+        color: #fff;
+    }
+    .add-ticket-btn:hover {
+        background: #2563eb;
+    }
+    .submit-btn {
+        background: #22c55e;
+        color: #fff;
+        width: 100%;
+    }
+    .submit-btn:hover {
+        background: #16a34a;
+    }
+</style>
+
+<div class="add-event-container">
+    <h2>🎶 Add Your Event</h2>
+    <form method="post">
+        {% csrf_token %}
+        
+        <!-- Event Form -->
+        {{ form.as_p }}
+
+        <!-- Ticket Options -->
+        <h4 style="margin-top:20px;">🎟 Ticket Options</h4>
+        <div id="tickets">
+            {{ formset.management_form }}
+            {% for ticket_form in formset %}
+                <div class="ticket-form">
+                    {{ ticket_form.label }}
+                    {{ ticket_form.price }}
+                    <button type="button" class="remove-ticket" onclick="removeTicket(this)">✖</button>
+                </div>
+            {% endfor %}
+        </div>
+
+        <button type="button" class="add-ticket-btn" onclick="addTicketForm()">➕ Add Another Ticket</button>
+        <br><br>
+        <button type="submit" class="submit-btn">Submit Event</button>
+    </form>
+
+    <p class="text-center mt-3" style="font-size:0.85rem; color:#94a3b8;">
+        Your event will be reviewed before it appears on the site.
+    </p>
+</div>
+
+<script>
+function addTicketForm() {
+    let totalForms = document.getElementById('id_form-TOTAL_FORMS');
+    let currentCount = parseInt(totalForms.value);
+    let ticketDiv = document.querySelectorAll('.ticket-form')[0].cloneNode(true);
+
+    // Reset cloned inputs
+    ticketDiv.querySelectorAll('input').forEach(input => {
+        input.value = '';
+        if (input.type === 'checkbox') {
+            input.checked = false;
+        }
+    });
+
+    // Update form indexes
+    ticketDiv.innerHTML = ticketDiv.innerHTML.replace(/form-\d+/g, `form-${currentCount}`);
+
+    document.getElementById('tickets').appendChild(ticketDiv);
+    totalForms.value = currentCount + 1;
+}
+
+function removeTicket(button) {
+    let ticketDiv = button.parentElement;
+    let tickets = document.querySelectorAll('.ticket-form');
+    if (tickets.length > 1) {
+        ticketDiv.remove();
+        // Update TOTAL_FORMS count
+        let totalForms = document.getElementById('id_form-TOTAL_FORMS');
+        totalForms.value = parseInt(totalForms.value) - 1;
+    }
+}
+</script>
+{% endblock %}

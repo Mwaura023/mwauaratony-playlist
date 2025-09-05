@@ -1,0 +1,11 @@
+{% extends "playlist/base.html" %}
+
+{% block title %}Event Submitted - Vibe Vault{% endblock %}
+
+{% block content %}
+<div class="container text-center" style="margin-top: 60px;">
+    <h2>🎉 Thank You!</h2>
+    <p>Your event has been submitted and is awaiting approval.</p>
+    <a href="{% url 'event_finder' %}" class="btn btn-notify mt-3">Back to Events</a>
+</div>
+{% endblock %}

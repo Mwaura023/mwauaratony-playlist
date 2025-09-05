@@ -1,4 +1,3 @@
-// Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('a[href^="#"]');
     
@@ -18,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Add animation on scroll
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -32,15 +30,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Observe all category cards
-    document.querySelectorAll('.category-card').forEach(card => {
+    // Observe category and event cards
+    document.querySelectorAll('.category-card, .event-card').forEach(card => {
         observer.observe(card);
+    });
+
+    // 3D Tilt Effect for Event Cards
+    document.querySelectorAll('.event-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const tiltX = (centerY - y) / 25;
+            const tiltY = (x - centerX) / 25;
+            card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+        });
     });
 });
 
 // Add background animation
 function createFloatingNotes() {
-    const container = document.querySelector('.hero-section');
+    const container = document.querySelector('.hero-section, .events-section');
     const notes = '🎵🎶🎸🥁🎷🎺🎻';
     
     for (let i = 0; i < 20; i++) {
@@ -57,19 +73,5 @@ function createFloatingNotes() {
     }
 }
 
-// Uncomment to enable floating notes (can be heavy on performance)
-// createFloatingNotes();
-
-
-function scrollToCategories() {
-    const categoriesSection = document.getElementById('categories');
-    if (categoriesSection) {
-        categoriesSection.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
-        });
-    } else {
-        // Fallback: scroll down a bit
-        window.scrollBy(0, 500);
-    }
-}
+// Enable floating notes for events page
+createFloatingNotes();

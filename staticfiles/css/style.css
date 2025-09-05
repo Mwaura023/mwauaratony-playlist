@@ -2,10 +2,12 @@
 :root {
     --primary-gradient: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
     --secondary-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    --rasta-gradient: linear-gradient(135deg, #ff0000 0%, #ffd700 50%, #008000 100%);
     --dark-bg: #0f0f1a;
     --card-bg: rgba(255, 255, 255, 0.05);
     --text-light: #ffffff;
     --text-muted: #b8b8b8;
+    --neon-glow: #00ffcc;
 }
 
 /* ===== BASE STYLES ===== */
@@ -26,17 +28,17 @@ body.dark-theme {
 .navbar-brand.brand-logo {
     font-family: 'Righteous', cursive;
     font-size: 1.8rem;
-    background: var(--primary-gradient);
+    background: var(--rasta-gradient);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .navbar-brand.brand-logo span {
-    background: var(--primary-gradient);
+    background: var(--rasta-gradient);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .nav-link {
@@ -47,10 +49,10 @@ body.dark-theme {
 
 .nav-link:hover {
     transform: translateY(-2px);
-    background: var(--primary-gradient);
+    background: var(--rasta-gradient);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* ===== HERO SECTION ===== */
@@ -65,11 +67,6 @@ body.dark-theme {
     text-align: center;
     position: relative;
     overflow: hidden;
-}
-
-/* REMOVE the ::before pseudo-element completely - delete these lines if they exist */
-.hero-section::before {
-    display: none; /* Completely remove it */
 }
 
 .hero-section h1 {
@@ -132,8 +129,67 @@ body.dark-theme {
 }
 
 .category-card .card-text {
-    color: var(--text-muted);
+    color: var(--text-light);
     margin-bottom: 1.5rem;
+}
+
+/* ===== NEON BUTTONS ===== */
+.btn-neon {
+    background: transparent;
+    border: 2px solid var(--neon-glow);
+    color: var(--neon-glow);
+    border-radius: 25px;
+    padding: 0.6rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px var(--neon-glow);
+}
+
+.btn-neon:hover {
+    background: var(--neon-glow);
+    color: var(--dark-bg);
+    box-shadow: 0 0 15px var(--neon-glow);
+    transform: translateY(-2px);
+}
+
+/* ===== CUSTOM SELECTOR ===== */
+.custom-select {
+    background: var(--rasta-gradient);
+    border: none;
+    border-radius: 25px;
+    padding: 0.8rem 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    width: 300px;
+}
+
+.custom-select:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+}
+
+.custom-select:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 255, 204, 0.5);
+}
+
+/* ===== NEON TITLE ===== */
+.neon-title {
+    font-family: 'Righteous', cursive;
+    background: var(--rasta-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px var(--neon-glow), 0 0 20px var(--neon-glow);
+    animation: neon-flicker 3s infinite alternate;
+}
+
+@keyframes neon-flicker {
+    0% { text-shadow: 0 0 10px var(--neon-glow), 0 0 20px var(--neon-glow); }
+    100% { text-shadow: 0 0 15px var(--neon-glow), 0 0 30px var(--neon-glow); }
 }
 
 /* ===== BUTTONS ===== */
@@ -149,6 +205,38 @@ body.dark-theme {
 .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.btn-spotify {
+    background: linear-gradient(135deg, #1DB954 0%, #1ed760 100%);
+    border: none;
+    color: white;
+    border-radius: 25px;
+    padding: 0.6rem 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-spotify:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(29, 185, 84, 0.3);
+    color: white;
+}
+
+.btn-drive {
+    background: linear-gradient(135deg, #4285F4 0%, #34A853 100%);
+    border: none;
+    color: white;
+    border-radius: 25px;
+    padding: 0.6rem 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-drive:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(66, 133, 244, 0.3);
+    color: white;
 }
 
 /* ===== FOOTER ===== */
@@ -193,9 +281,11 @@ body.dark-theme {
     .category-card {
         margin-bottom: 2rem;
     }
+    
+    .custom-select {
+        width: 80% !important;
+    }
 }
-
-
 
 /* ===== CATEGORY PAGE STYLES ===== */
 .category-header {
@@ -245,43 +335,10 @@ body.dark-theme {
     padding: 1rem 1.5rem;
 }
 
-/* Button Styles */
-.btn-spotify {
-    background: linear-gradient(135deg, #1DB954 0%, #1ed760 100%);
-    border: none;
-    color: white;
-    border-radius: 25px;
-    padding: 0.6rem 1rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.btn-spotify:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 15px rgba(29, 185, 84, 0.3);
-    color: white;
-}
-
-.btn-drive {
-    background: linear-gradient(135deg, #4285F4 0%, #34A853 100%);
-    border: none;
-    color: white;
-    border-radius: 25px;
-    padding: 0.6rem 1rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.btn-drive:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 15px rgba(66, 133, 244, 0.3);
-    color: white;
-}
-
 /* Empty State */
 .empty-state {
     padding: 3rem 1rem;
-    color: var(--text-muted);
+    color: var(--text-light);
 }
 
 /* Responsive Adjustments */
